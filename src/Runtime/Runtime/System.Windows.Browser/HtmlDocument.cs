@@ -107,8 +107,9 @@ namespace System.Windows.Browser
             set => OpenSilver.Interop.ExecuteJavaScriptVoid($"document.cookie = {INTERNAL_InteropImplementation.GetVariableStringForJS(value)}");
         }
 
-        [OpenSilver.NotImplemented]
-        public HtmlElement Body { get; private set; }
+        HtmlElement _body;
+        public HtmlElement Body => _body ??= new HtmlElement(new BodyRef());
+
 
         [OpenSilver.NotImplemented]
         public HtmlElement CreateElement(string tagName)

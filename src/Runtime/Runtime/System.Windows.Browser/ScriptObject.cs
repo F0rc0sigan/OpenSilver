@@ -460,6 +460,17 @@ namespace System.Windows.Browser
         public void Dispose() { }
     }
 
+    internal sealed class BodyRef : IJSObjectRef
+    {
+        private const string Body = "window.document.body";
+
+        public BodyRef() { }
+
+        public string ToJavaScriptString() => Body;
+
+        public void Dispose() { }
+    }
+
     internal sealed class JSObjectRef : IJSObjectRef
     {
         private readonly string _jsRef;
